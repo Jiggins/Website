@@ -1,23 +1,25 @@
 module Foundation where
 
+import Data.Text
+import Database.Persist.Sql (SqlPersistT)
+import Model
+import Network.HTTP.Client.Conduit (Manager, HasHttpManager (getHttpManager))
 import Prelude
+import Settings (widgetFile, Extra (..))
+import Settings.Development (development)
+import Settings.StaticFiles
+import Text.Hamlet (hamletFile)
+import Text.Jasmine (minifym)
 import Yesod
-import Yesod.Static
 import Yesod.Auth
 import Yesod.Auth.BrowserId
+import Yesod.Core.Types (Logger)
 import Yesod.Default.Config
 import Yesod.Default.Util (addStaticContentExternal)
-import Network.HTTP.Client.Conduit (Manager, HasHttpManager (getHttpManager))
-import qualified Settings
-import Settings.Development (development)
+import Yesod.Form.Nic (YesodNic)
+import Yesod.Static
 import qualified Database.Persist
-import Database.Persist.Sql (SqlPersistT)
-import Settings.StaticFiles
-import Settings (widgetFile, Extra (..))
-import Model
-import Text.Jasmine (minifym)
-import Text.Hamlet (hamletFile)
-import Yesod.Core.Types (Logger)
+import qualified Settings
 
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -161,3 +163,5 @@ getExtra = fmap (appExtra . settings) getYesod
 -- wiki:
 --
 -- https://github.com/yesodweb/yesod/wiki/Sending-email
+
+instance YesodNic App
