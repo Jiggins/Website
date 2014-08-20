@@ -1,0 +1,37 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "./../",
+			"file_exclude_patterns": [
+				"*.hi",
+				"*.o",
+				"*.sqlite3",
+				"*.swp",
+				".DS_Store",
+				".dir-locals.el",
+				".hsenv*",
+				"cabal.sandbox.config",
+				"config/client_session_key.aes",
+			],
+			"folder_exclude_patterns": [
+				"static/tmp",
+				".cabal-sandbox",
+				"static/combined",
+				"cabal-dev",
+				"yesod-devel",
+				"dist",
+			]
+		}
+	],
+
+	"build_systems":
+	[
+		{
+			"name": "Website",
+			"cmd": ["cabal", "build"],
+			"working_dir": "$project_path/..",
+		}
+	]
+}
