@@ -1,5 +1,4 @@
-$newline never
-\<!doctype html>
+$doctype 5
 \<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 \<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 \<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -7,11 +6,9 @@ $newline never
 <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="UTF-8">
-
         <title>#{pageTitle pc}
         <meta name="description" content="">
         <meta name="author" content="">
-
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
         ^{pageHead pc}
@@ -21,25 +18,25 @@ $newline never
         \<![endif]-->
 
         <script>
-          document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
     <body>
         <div class="container">
             <header>
-            <div id="main" role="main">
+            <main>
               ^{pageBody pc}
             <footer>
                 #{extraCopyright $ appExtra $ settings master}
 
         $maybe analytics <- extraAnalytics $ appExtra $ settings master
             <script>
-              if(!window.location.href.match(/localhost/)){
-                window._gaq = [['_setAccount','#{analytics}'],['_trackPageview'],['_trackPageLoadTime']];
-                (function() {
-                \  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                \  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                \  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                })();
-              }
+                if(!window.location.href.match(/localhost/)){
+                    window._gaq = [['_setAccount','#{analytics}'],['_trackPageview'],['_trackPageLoadTime']];
+                    (function() {
+                    \  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    \  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    \  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                    })();
+                }
         \<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
         \<!--[if lt IE 7 ]>
             <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js">

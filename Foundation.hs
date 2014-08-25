@@ -1,6 +1,5 @@
 module Foundation where
 
-import Data.Text
 import Database.Persist.Sql (SqlPersistT)
 import Model
 import Network.HTTP.Client.Conduit (Manager, HasHttpManager (getHttpManager))
@@ -117,6 +116,11 @@ instance Yesod App where
         development || level == LevelWarn || level == LevelError
 
     makeLogger = return . appLogger
+
+    errorHandler NotFound = fmap toTypedContent . defaultLayout $ do
+        setTitle "404 Not found"
+        $(widgetFile "error")
+    errorHandler other = defaultErrorHandler other
 
 -- How to run database actions.
 instance YesodPersist App where
