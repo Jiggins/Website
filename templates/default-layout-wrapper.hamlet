@@ -23,7 +23,7 @@ $doctype 5
         <div class="container">
             <header>
             <main>
-              ^{pageBody pc}
+                ^{pageBody pc}
             <footer>
                 #{extraCopyright $ appExtra $ settings master}
 
